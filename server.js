@@ -25,6 +25,13 @@ app.get("/", (req, res, next) => {
 app.get("/api/1.0/emr", (req, res, next) => {
     var sql = "SELECT * from patients";
     var params = [];
+
+    var age = req.query.age;
+    if (age) {
+        console.log("age : %age%".replace("%age%", age));
+        sql = sql + " WHERE age >= %age%".replace("%age%", age);
+    }
+
     db.all(sql, params, (error, rows) => {
         if (error) {
             res.status(400).json({"error": error.message});
