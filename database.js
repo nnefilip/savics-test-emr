@@ -21,6 +21,8 @@ let db = new sqlite.Database(DBSOURCE, (error) => {
             if (error) {
                 console.log("Table patient already exists");
             } else {
+                var initialisation = 'INSERT INTO patients(firstname, lastname, gender, age, city, country, diabetic) VALUES(?, ?, ?, ?, ?, ?, ?)';
+                db.run(initialisation, ['', '', '', 0, '', '', '']);
                 console.log("Table patient created successfully");
             }
         });
