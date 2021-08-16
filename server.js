@@ -76,6 +76,8 @@ app.post("/api/1.0/emr", (req, res, next) => {
         return;
     }
 
+    console.log(req.body);
+
     // structured data before created a new patient
     var data = {
         firstname: req.body.firstname,
